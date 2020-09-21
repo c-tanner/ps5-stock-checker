@@ -1,7 +1,5 @@
 <?php
 
-    $headers = [];
-
     function checkStock($name, $url, $delimiter, $elm, $text) {
 
         echo "\033[37mChecking $name.. ";
