@@ -1,5 +1,7 @@
 <?php
 
+    $headers = [];
+
     function checkStock($name, $url, $delimiter, $elm, $text) {
 
         echo "\033[37mChecking $name.. ";
@@ -15,8 +17,8 @@
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-              "Cookie: session-id=147-0104658-0536114; session-id-time=2082787201l; i18n-prefs=USD"
-            ),
+                "User-Agent: PS5StockChecker/1.0"
+            )
         ));
 
         $response = curl_exec($curl);
@@ -29,7 +31,7 @@
                 echo "\033[31mUnavailable.\n";
             } else {
                 echo "\033[32mIn Stock! $url\n";
-                echo $check."\n";
+                echo $check;
             }
 
         } else {
@@ -66,7 +68,7 @@
         ],
         "Best Buy" => [
             "url"       => "https://www.bestbuy.com/site/sony-playstation-5-console/6426149.p?skuId=6426149",
-            "delimiter" => "add-to-cart-button",
+            "delimiter" => "btn-lg btn-block add-to-cart-button",
             "elm"       => "button",
             "text"      => "Coming Soon"
         ]
